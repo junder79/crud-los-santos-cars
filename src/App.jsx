@@ -4,14 +4,17 @@ import Container from '@mui/material/Container';
 import NavBar from  '../componentes/nav'
 import Button from '@mui/material/Button';
 import ListarCategorias from '../views/listarCategorias';
+import { Route } from 'react-router-dom';
+
 function App() {
   
 
   return (
     <div>
-     <NavBar></NavBar>
-     <ListarCategorias></ListarCategorias>
-  </div>
+    
+     <Route path='/' element =  {<ListarCategorias></ListarCategorias>} />   
+     <Route path='/detalle/:idTipo' element =  {<ListarCategorias></ListarCategorias>} /> 
+     </div>
   )
 }
 

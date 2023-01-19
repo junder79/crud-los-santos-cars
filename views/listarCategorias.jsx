@@ -21,17 +21,68 @@ const Item = styled(Paper)(({ theme }) => ({
 function ListarCategorias() {
     return ( 
 <Grid container spacing={2}>
-        <Grid item xs={8} >
-          <Item>xs=8</Item>
+        <Grid item xs={4} >
+        
+
+          <Card>
+          <CardMedia
+        sx={{ height: 140 }}
+        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
+        title="green iguana"
+      />
+            <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Autos
+        </Typography>
+
+            </CardContent>
+          </Card>
+       
         </Grid>
         <Grid item xs={4}>
-          <Item>xs=4</Item>
+        <Card>
+          <CardMedia
+        sx={{ height: 140 }}
+        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
+        title="green iguana"
+      />
+            <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        Aviones
+        </Typography>
+
+            </CardContent>
+          </Card>
         </Grid>
         <Grid item xs={4}>
-          <Item>xs=4</Item>
+        <Card>
+          <CardMedia
+        sx={{ height: 140 }}
+        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
+        title="green iguana"
+      />
+            <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        Helicoptero
+        </Typography>
+
+            </CardContent>
+          </Card>
         </Grid>
-        <Grid item xs={8}>
-          <Item>xs=8</Item>
+        <Grid item xs={4}>
+        <Card>
+          <CardMedia
+        sx={{ height: 140 }}
+        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
+        title="green iguana"
+      />
+            <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+       Extraños
+        </Typography>
+
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
        
