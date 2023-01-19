@@ -8,6 +8,10 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link } from "react-router-dom";
+
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,7 +36,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Autos
+          Autos  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
@@ -48,7 +52,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Aviones
+        Aviones  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
@@ -63,7 +67,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Helicoptero
+        Helicoptero  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
@@ -78,7 +82,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-       Extraños
+       Extraños  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>

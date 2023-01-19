@@ -1,7 +1,7 @@
-function detalleCategoria() {
+function DetalleCategoria() {
     return ( 
-        <h1>Detalle categoria</h1>
+        <p>detalle</p>
      );
 }
 
-export default detalleCategoria;
+export default DetalleCategoria;
