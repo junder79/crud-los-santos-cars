@@ -36,7 +36,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Autos  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
+          Autos  <Link to={'/detalle-categoria/1'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
@@ -52,7 +52,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Aviones  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
+        Aviones  <Link to={'/detalle-categoria/2'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
@@ -67,7 +67,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Helicoptero  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
+        Helicoptero  <Link to={'/detalle-categoria/3'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
@@ -82,7 +82,7 @@ function ListarCategorias() {
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-       Extraños  <Link to={'/detalle-categoria'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
+       Extraños  <Link to={'/detalle-categoria/4'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
