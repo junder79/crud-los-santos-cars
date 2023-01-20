@@ -5,8 +5,19 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 
+const paginas = ['home', 'detalle-categoria'];
+
+
+
+const handleCloseNavMenu  = () => {
+  console.log("clikeado");
+};
  function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -24,7 +35,38 @@ import IconButton from '@mui/material/IconButton';
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Los Santos Cars Admin
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {paginas.map((paginas) => (
+             <Link to={paginas}> <Button
+             
+             key={paginas}
+            
+             sx={{ my: 2, color: 'white', display: 'block' }}
+           >
+             {paginas}
+           </Button></Link>
+            ))}
+          </Box>
+          <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+             
+            >
+           
+            </Menu>
+          </Box>
+          
         </Toolbar>
       </AppBar>
     </Box>
