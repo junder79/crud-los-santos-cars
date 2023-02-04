@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,6 +10,9 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
+
 
 
 
@@ -23,71 +26,48 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 function ListarCategorias() {
+
+  useEffect(()=>{
+    getCategories();
+  },[]);
+
+  const [categorias,setCategorias] = useState([]);
+    const getCategories = async () => {
+        try {
+          const response = await axios.get('https://los-santos-cars-api.onrender.com/categoria');
+          setCategorias(response.data);
+          console.log("data: ", response.data);
+        } catch (error) {
+          console.log("error ", error);
+        }
+      }
+
+      
+
     return ( 
 <Grid container spacing={2}>
-        <Grid item xs={4} >
+        {
+          categorias.map((category)=>(
+            <Grid item xs={4} >
         
 
           <Card>
           <CardMedia
         sx={{ height: 140 }}
-        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
-        title="green iguana"
+        image={category.imagen}
+        title={category.nombre}
       />
             <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Autos  <Link to={'/detalle-categoria/1'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
+            {category.nombre}  <Link to={'/detalle-categoria/' + category._id}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
         </Typography>
 
             </CardContent>
           </Card>
        
-        </Grid>
-        <Grid item xs={4}>
-        <Card>
-          <CardMedia
-        sx={{ height: 140 }}
-        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
-        title="green iguana"
-      />
-            <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Aviones  <Link to={'/detalle-categoria/2'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
-        </Typography>
-
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={4}>
-        <Card>
-          <CardMedia
-        sx={{ height: 140 }}
-        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
-        title="green iguana"
-      />
-            <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Helicoptero  <Link to={'/detalle-categoria/3'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
-        </Typography>
-
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={4}>
-        <Card>
-          <CardMedia
-        sx={{ height: 140 }}
-        image="https://media.istockphoto.com/id/1306933807/photo/blue-number-one-glowing-amid-black-number-ones-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=VxVwDRWNWHdZbRT2ox_MhVkGjj124WqwrQAHNwSdxIk="
-        title="green iguana"
-      />
-            <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-       Extraños  <Link to={'/detalle-categoria/4'}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
-        </Typography>
-
-            </CardContent>
-          </Card>
-        </Grid>
+        </Grid>  
+          ))
+        }    
       </Grid>
        
       

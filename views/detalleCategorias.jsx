@@ -7,8 +7,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-
+import Grid from '@mui/material/Grid'
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit';
 function DetalleCategoria() {
 
     useEffect(() => {
@@ -31,31 +32,37 @@ function DetalleCategoria() {
     const {id} = useParams();
     return ( 
        <>
-        <p>detalle{id}</p>
-        {
+        <Grid container spacing={2}>
+            
+
+            {
             dataCars.map((elements)=>(
-                <p key={elements.id}>{elements.title}</p>
-            )) 
-        }
-        {/* <Card sx={{ minWidth: 275 }}>
+                <Grid item={6}>
+                <Card sx={{ minWidth: 275 }}>
         <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" >
-            Word of the Day
+           {elements.id}
         </Typography>
         
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            adjective
+           {elements.nombreVehiculo}
         </Typography>
         <Typography variant="body2">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+           {elements.descripcion}
         </Typography>
         </CardContent>
         <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" variant="contained"><DeleteOutlineIcon/></Button>
+        <Button size="small" variant="contained"><EditIcon/></Button>
         </CardActions>
-        </Card> */}
+        </Card>
+        </Grid>
+            )) 
+        }
+          
+        </Grid>
+      
+          
        </>
      );
 }
