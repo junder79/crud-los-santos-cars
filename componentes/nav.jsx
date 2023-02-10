@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 
 
-const paginas = ['home', 'detalle-categoria'];
+const paginas = ['inicio', 'detalle-categoria'];
 
 
 

@@ -14,7 +14,7 @@ function App() {
     <div>
     <NavBar/>
     <Routes>
-    <Route path='/home' element =  {<ListarCategorias></ListarCategorias>} />   
+    <Route path='/inicio' element =  {<ListarCategorias></ListarCategorias>} />   
      <Route path='/detalle-categoria/:id' element =  {<DetalleCategoria/>} /> 
     </Routes>
      </div>
