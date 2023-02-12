@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -18,68 +18,68 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 function ListarCategorias() {
 
-  useEffect(()=>{
+  useEffect(() => {
     getCategories();
-  },[]);
+  }, []);
 
-  const [categorias,setCategorias] = useState([]);
+  const [categorias, setCategorias] = useState([]);
   const [statusCarga, setStatusCarga] = useState(false);
-    const getCategories = async () => {
-      
-        try {
-          setStatusCarga(true);
-          const response = await axios.get('https://los-santos-cars-api.onrender.com/categoria');
-          setCategorias(response.data);
-          setStatusCarga(false);
-          console.log("data: ", response.data);
-        } catch (error) {
-          console.log("error ", error);
-        }
+  const getCategories = async () => {
+
+    try {
+      setStatusCarga(true);
+      const response = await axios.get('https://los-santos-cars-api.onrender.com/categoria');
+      setCategorias(response.data);
+      setStatusCarga(false);
+      console.log("data: ", response.data);
+    } catch (error) {
+      console.log("error ", error);
+    }
+  }
+
+
+
+  return (
+    <Grid style={{ marginTop: 10 }} container spacing={2}>
+      {
+        statusCarga ? <Box sx={{ width: '100%' }}>
+          <LinearProgress />
+        </Box> : categorias.map((category) => (
+          <Grid item xs={4} >
+
+
+            <Card>
+              <CardMedia
+                sx={{ height: 140 }}
+                image={category.imagen}
+                title={category.nombre}
+              />
+              <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                  {category.nombre}  <Link to={'/detalle-categoria/' + category._id}><ArrowForwardIcon sx={{ fontSize: 30, color: 'black' }} /></Link>
+                </Typography>
+
+              </CardContent>
+            </Card>
+
+          </Grid>
+        ))
       }
 
-      
+    </Grid>
 
-    return ( 
-<Grid style={{marginTop:10}} container spacing={2}>
-        {
-          statusCarga ?    <Box  sx={{ width: '100%' }}>
-          <LinearProgress />
-        </Box> :    categorias.map((category)=>(
-            <Grid item xs={4} >
-        
 
-          <Card>
-          <CardMedia
-        sx={{ height: 140 }}
-        image={category.imagen}
-        title={category.nombre}
-      />
-            <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {category.nombre}  <Link to={'/detalle-categoria/' + category._id}><ArrowForwardIcon  sx={{fontSize:30, color:'black'}}/></Link>
-        </Typography>
 
-            </CardContent>
-          </Card>
-       
-        </Grid>  
-          ))
-        }
-     
-      </Grid>
-       
-      
-
-     );
+  );
 }
 
 export default ListarCategorias;
