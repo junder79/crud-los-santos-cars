@@ -11,23 +11,21 @@ const useSelectResistencia = () => {
     const [resistencia, setResistencia] = useState('');
 
    
-    const SelectResistencia = () => (
-        <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Resistencia:</InputLabel>
+    const SelectResistencia = ({field}) => (
+       
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={resistencia}
           label="Resistencia"
-          onChange={(event) => setResistencia(event.target.value) }  
+          {...field} 
         >
           <MenuItem value='Mala'>Mala</MenuItem>
           <MenuItem value='Buena'>Buena</MenuItem>
           <MenuItem value='Excelente'>Excelente</MenuItem>
         </Select>
-      </FormControl>
     )
-    return [SelectResistencia];
+    return [SelectResistencia,resistencia];
 }
 
 export default useSelectResistencia;

@@ -9,24 +9,24 @@ import Select from '@mui/material/Select';
 const useSelectVelocidad = () => {
     const [velocidad,setVelocidad] = useState('');
 
-    const SelectVelocidad = () => (
-        <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Velocidad:</InputLabel>
+    const SelectVelocidad = ({field}) => (
+       
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={velocidad}
           label="Velocidad"
           onChange={(event) => setVelocidad(event.target.value) }  
+          {...field} 
         >
           <MenuItem value='Mala'>Mala</MenuItem>
           <MenuItem value='Buena'>Buena</MenuItem>
           <MenuItem value='Excelente'>Excelente</MenuItem>
         </Select>
-      </FormControl>     
+    
     )
 
-    return [SelectVelocidad];
+    return [SelectVelocidad,velocidad];
 
 }
 
