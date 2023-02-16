@@ -12,9 +12,9 @@ import Grid from '@mui/material/Grid'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import LinearProgress from '@mui/material/LinearProgress';
-import {Routes, Route, useNavigate} from 'react-router-dom';
-
-
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import useMessage from "../src/hooks/useMessage";
+import Swal from 'sweetalert2'
 
 function DetalleCategoria() {
 
@@ -22,8 +22,11 @@ function DetalleCategoria() {
     getAllElementByCategories();
   }, []);
 
+  const navigate = useNavigate();
   const [dataCars, setData] = useState([]);
   const [statusCarga, setCargado] = useState(false);
+  const [MenssagePeticion] = useMessage();
+
   const getAllElementByCategories = async () => {
     try {
       setCargado(true);
@@ -35,23 +38,52 @@ function DetalleCategoria() {
     }
 
   }
-  const navigate = useNavigate();
+
   const nuevoVehiculoComponent = () => {
-   navigate('/new-vehicle');
+    navigate('/new-vehicle');
   }
 
+  const eliminarVehiculo = async (id) => {
+    try {
+      const response = await axios.delete(`https://los-santos-cars-api.onrender.com/api/vehiculos/deleteVehiculo/${id}`);
+      MenssagePeticion(`Eliminado`, 'success');
+      getAllElementByCategories();
+    } catch (error) {
+      MenssagePeticion(`Error al eliminar ${error}`, 'error');
+    }
+
+  }
+
+  const deleteVehicle = async (id) => {
+    const respuesta = await Swal.fire({
+      title: "Deseas eliminar el vehiculo?",
+      text: "Se eliminará de la lista",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      return result.isConfirmed;
+    })
+    if (respuesta) {
+      await eliminarVehiculo(id);
+    }
+
+
+  }
   const { id } = useParams();
+  
   return (
     <>
       {
         statusCarga ? <LinearProgress /> : null}
-       <Button onClick={nuevoVehiculoComponent} variant="outlined" style={{ marginBottom: '20', marginTop: '20' }}>Agregar Vehiculo</Button>
+      <Button onClick={nuevoVehiculoComponent} variant="outlined" style={{ marginBottom: '20', marginTop: '20' }}>Agregar Vehiculo</Button>
       <Grid container spacing={2}>
 
 
         {
           dataCars.map((elements) => (
-            <Grid item={6}>
+            <Grid item={6} style={{marginTop:10}}>
               <Card sx={{ minWidth: 275 }}>
                 <CardMedia
                   sx={{ height: 140 }}
@@ -71,8 +103,8 @@ function DetalleCategoria() {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" variant="contained"><DeleteOutlineIcon /></Button>
-                  <Button size="small" variant="contained"><EditIcon /></Button>
+                  <Button size="small" color="warning" onClick={() => deleteVehicle(elements._id)} variant="contained"><DeleteOutlineIcon /></Button>
+                  <Button size="small" color="error" variant="contained"><EditIcon /></Button>
                 </CardActions>
               </Card>
             </Grid>
