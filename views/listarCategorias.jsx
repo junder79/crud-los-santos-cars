@@ -40,7 +40,6 @@ function ListarCategorias() {
       const response = await axios.get('https://los-santos-cars-api.onrender.com/categoria');
       setCategorias(response.data);
       setStatusCarga(false);
-      console.log("data: ", response.data);
     } catch (error) {
       console.log("error ", error);
     }
@@ -65,7 +64,7 @@ function ListarCategorias() {
               />
               <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  {category.nombre}  <Link to={'/detalle-categoria/' + category._id}><ArrowForwardIcon sx={{ fontSize: 30, color: 'black' }} /></Link>
+                  {category.nombre}  <Link to={'/detalle-categoria/' + category.nombre}><ArrowForwardIcon sx={{ fontSize: 30, color: 'black' }} /></Link>
                 </Typography>
 
               </CardContent>

@@ -19,18 +19,20 @@ import Swal from 'sweetalert2'
 function DetalleCategoria() {
 
   useEffect(() => {
-    getAllElementByCategories();
+    getAllElementByCategories(nameCategory);
   }, []);
 
   const navigate = useNavigate();
   const [dataCars, setData] = useState([]);
   const [statusCarga, setCargado] = useState(false);
   const [MenssagePeticion] = useMessage();
+  const { nameCategory } = useParams();
 
-  const getAllElementByCategories = async () => {
+  
+  const getAllElementByCategories = async (nameCategory) => {
     try {
       setCargado(true);
-      const response = await axios.get("https://los-santos-cars-api.onrender.com/categoria/cars");
+      const response = await axios.get(`https://los-santos-cars-api.onrender.com/categoria/${nameCategory}`);
       setCargado(false);
       setData(response.data);
     } catch (error) {
@@ -71,7 +73,7 @@ function DetalleCategoria() {
 
 
   }
-  const { id } = useParams();
+ 
   
   return (
     <>
