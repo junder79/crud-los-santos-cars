@@ -5,6 +5,7 @@ import NavBar from '../componentes/nav'
 import ListarCategorias from '../views/listarCategorias';
 import DetalleCategoria from '../views/detalleCategorias';
 import NuevoVehiculo from '../views/nuevoVehiculo';
+import UpdateVehiculo from '../views/updateVehiculo';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/inicio' element={<ListarCategorias></ListarCategorias>} />
         <Route path='/detalle-categoria/:nameCategory' element={<DetalleCategoria />} />
         <Route path='/new-vehicle' element={<NuevoVehiculo />} />
+        <Route path='/update' element={<UpdateVehiculo />} />
       </Routes></>
 
   )

@@ -73,6 +73,10 @@ function DetalleCategoria() {
 
 
   }
+
+  const updateVehicle = (elements) => {
+    navigate('/update', elements);
+  }
  
   
   return (
@@ -106,7 +110,7 @@ function DetalleCategoria() {
                 </CardContent>
                 <CardActions>
                   <Button size="small" color="warning" onClick={() => deleteVehicle(elements._id)} variant="contained"><DeleteOutlineIcon /></Button>
-                  <Button size="small" color="error" variant="contained"><EditIcon /></Button>
+                  <Button size="small" color="error" onClick={()=> updateVehicle(elements)} variant="contained"><EditIcon /></Button>
                 </CardActions>
               </Card>
             </Grid>
