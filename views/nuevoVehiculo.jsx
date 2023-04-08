@@ -12,6 +12,7 @@ import axios from "axios";
 import InputLabel from '@mui/material/InputLabel';
 import Card from '@mui/material/Card';
 import FormControl from '@mui/material/FormControl';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useForm, Controller } from "react-hook-form";
 
 
@@ -25,14 +26,27 @@ function NuevoVehiculo() {
   const [MenssagePeticion] = useMessage();
   const { register, handleSubmit, watch, control, formState: { errors } } = useForm();
   const [imagen, setImagen] = useState('');
+  const navigate = useNavigate();
 
+  
   const onSubmit = async (data) => {
+  try {
     setBotonDisabled(true);
     data.imagen = imagen;
+    const nombreCategoria = data.categoria;
     const response = await axios.post('https://los-santos-cars-api.onrender.com/api/vehiculos/registro', data);
     const respuesta = response.data.status;
     setBotonDisabled(false);
-    respuesta == 200  ? MenssagePeticion('Vehiculo Ingresado Correctamente' ,'success') : MenssagePeticion('Error al ingresar Vehiculo' ,'error');
+    if(respuesta == 200){
+      MenssagePeticion('Vehiculo Ingresado Correctamente' ,'success');
+      navigate('/detalle-categoria/'+ nombreCategoria );
+    }else {
+      MenssagePeticion('Error al ingresar Vehiculo' ,'error');
+    }
+  } catch (error) {
+    MenssagePeticion('Error al ingresar Vehiculo' ,'error');
+  }
+    
   };
   
   const convertImage = (e) => {
