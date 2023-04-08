@@ -53,7 +53,7 @@ function ListarCategorias() {
         statusCarga ? <Box sx={{ width: '100%' }}>
           <LinearProgress />
         </Box> : categorias.map((category) => (
-          <Grid item xs={4} >
+          <Grid item xs={4} key={category._id} >
 
 
             <Card>

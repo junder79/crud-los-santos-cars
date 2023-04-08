@@ -20,7 +20,9 @@ function App() {
         <Route path='/detalle-categoria/:nameCategory' element={<DetalleCategoria />} />
         <Route path='/new-vehicle' element={<NuevoVehiculo />} />
         <Route path='/update' element={<UpdateVehiculo />} />
-      </Routes></>
+      </Routes>
+      
+      </>
 
   )
 }

@@ -89,7 +89,7 @@ function DetalleCategoria() {
 
         {
           dataCars.map((elements) => (
-            <Grid item={6} style={{marginTop:10}}>
+            <Grid  key={elements._id} item={6} style={{marginTop:10}}>
               <Card sx={{ minWidth: 275 }}>
                 <CardMedia
                   sx={{ height: 140 }}
