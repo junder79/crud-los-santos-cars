@@ -73,9 +73,8 @@ function DetalleCategoria() {
 
 
   }
-
   const updateVehicle = (elements) => {
-    navigate('/update', elements);
+    navigate('/update', { state: elements });
   }
  
   

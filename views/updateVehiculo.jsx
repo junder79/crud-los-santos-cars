@@ -3,10 +3,11 @@ import { Routes, Route, useParams ,useLocation} from 'react-router-dom';
 
 const UpdateVehiculo = () => {
 
-    const location = useLocation();
-    console.log(useLocation()) 
+  const location = useLocation();
+  const parametros = location.state;
+    console.log("Update vehiocule",parametros.categoria) ;
   return (
-    <div>UpdateVehiculo </div>
+    <h3>{parametros.nombre}</h3>
   )
 }
 

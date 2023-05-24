@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.13.2",
     "axios": "^1.2.3",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
