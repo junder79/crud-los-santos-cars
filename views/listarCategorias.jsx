@@ -13,7 +13,9 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
 import LinearProgress from '@mui/material/LinearProgress';
-
+import {
+  useQuery
+} from '@tanstack/react-query'
 
 
 
@@ -26,33 +28,24 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function ListarCategorias() {
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  const [categorias, setCategorias] = useState([]);
-  const [statusCarga, setStatusCarga] = useState(false);
-  const getCategories = async () => {
-
-    try {
-      setStatusCarga(true);
-      const response = await axios.get('https://los-santos-cars-api.onrender.com/categoria');
-      setCategorias(response.data);
-      setStatusCarga(false);
-    } catch (error) {
-      console.log("error ", error);
-    }
+  const {isLoading, isError, data }  = useQuery(['categories'],
+  async () => await axios.get('https://los-santos-cars-api.onrender.com/categoria'),{
+    staleTime: 15 * 1000,
+    keepPreviousData:true
   }
+  );
 
+  if (isError) {
+    return <span>Error: {error.message}</span>
+  }
 
 
   return (
     <Grid style={{ marginTop: 10 }} container spacing={2}>
       {
-        statusCarga ? <Box sx={{ width: '100%' }}>
+        isLoading ? <Box sx={{ width: '100%' }}>
           <LinearProgress />
-        </Box> : categorias.map((category) => (
+        </Box> : data.data.map((category) => (
           <Grid item xs={4} key={category._id} >
 
 

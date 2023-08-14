@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import Container from '@mui/material/Container';
+
 import NavBar from '../componentes/nav'
 import ListarCategorias from '../views/listarCategorias';
 import DetalleCategoria from '../views/detalleCategorias';
