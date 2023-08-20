@@ -21,13 +21,14 @@ function DetalleCategoria() {
   const [MenssagePeticion] = useMessage();
   const { nameCategory } = useParams();
   const { isLoading, isError, data } = useQuery(
-    ["vehicules"],
+    [nameCategory],
     async () =>
       await axios.get(
         `https://los-santos-cars-api.onrender.com/categoria/${nameCategory}`
       ),{
-      
-      keepPreviousData:false
+
+        staleTime: 15 * 1000,
+        keepPreviousData:false
     }
   );
 
