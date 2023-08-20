@@ -12,10 +12,11 @@ import Grid from "@mui/material/Grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import LinearProgress from "@mui/material/LinearProgress";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import useMessage from "../src/hooks/useMessage";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import SwipeableTemporaryDrawer from '../componentes/drawerInfo';
 function DetalleCategoria() {
   const navigate = useNavigate();
   const [MenssagePeticion] = useMessage();
@@ -27,7 +28,7 @@ function DetalleCategoria() {
         `https://los-santos-cars-api.onrender.com/categoria/${nameCategory}`
       ),{
 
-        staleTime: 15 * 1000,
+        staleTime: 40 * 1000,
         keepPreviousData:false
     }
   );
@@ -80,33 +81,29 @@ function DetalleCategoria() {
 
   if (!isLoading && !isError) {
     const vehicules = [
-      <Button
+     /*  <Button
         onClick={nuevoVehiculoComponent}
         variant="outlined"
         style={{ marginBottom: "20", marginTop: "20" }}
       >
         Agregar Vehiculo
-      </Button>,
+      </Button> */
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+        <Typography   sx={{fontWeight: 'bold', textTransform: 'uppercase', marginTop:'5px'  }}   color="text.secondary" variant="h3">{nameCategory}</Typography>
+        </Grid>
         {data.data.map((elements) => (
-          <Grid key={elements._id} item={6} style={{ marginTop: 10 }}>
-            <Card sx={{ minWidth: 275 }}>
+          <Grid key={elements._id}  xs={12} sm={6} md={2}   item={6} style={{ marginTop: 10 }}>
+            <Card>
               <CardMedia
-                sx={{ height: 140 }}
+                sx={{ height: 100 }}
                 image={elements.imagen}
                 title={elements.nombre}
               />
               <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary">
-                  {elements.id}
-                </Typography>
-
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  {elements.nombre}
-                </Typography>
-                <Typography variant="body2">{elements.descripcion}</Typography>
+              <SwipeableTemporaryDrawer name={elements.nombre}  image={elements.imagen} description={elements.descripcion} price={elements.price} dlc={elements.dlc} ></SwipeableTemporaryDrawer>
               </CardContent>
-              <CardActions>
+             {/*  <CardActions>
                 <Button
                   size="small"
                   color="warning"
@@ -123,7 +120,7 @@ function DetalleCategoria() {
                 >
                   <EditIcon />
                 </Button>
-              </CardActions>
+              </CardActions> */}
             </Card>
           </Grid>
         ))}

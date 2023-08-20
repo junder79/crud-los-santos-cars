@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 
 
-const paginas = ['inicio', 'detalle-categoria'];
+const paginas = ['inicio'];
 
 
 
@@ -32,8 +32,8 @@ const handleCloseNavMenu  = () => {
           >
            
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Los Santos Cars Admin
+          <Typography variant="button" sx={{ fontSize: 20, fontWeight: 'bold', flexGrow: 1 }}  component="div" >
+            Los Santos Cars Admin BETA
           </Typography>
           <Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

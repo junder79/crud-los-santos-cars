@@ -17,7 +17,7 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path='/inicio' element={<ListarCategorias></ListarCategorias>} />
+        <Route path='/inicio' element={<ListarCategorias exact></ListarCategorias>} />
         <Route path='/detalle-categoria/:nameCategory' element={<DetalleCategoria />} />
         <Route path='/new-vehicle' element={<NuevoVehiculo />} />
         <Route path='/update' element={<UpdateVehiculo />} />
